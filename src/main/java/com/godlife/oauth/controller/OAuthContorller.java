@@ -26,8 +26,10 @@ public class OAuthContorller {
     }
 
     @GetMapping("/google")
-    public String google(){
-        return "google";
+    public String googleCallback(String code, String state){
+        System.out.println("googleCallback 함수 진입");
+        oAuthService.login(code, state, "google");
+        return "redirect:" + frontBaseUrl;
     }
 
     @GetMapping("/kakao")
