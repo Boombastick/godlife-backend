@@ -29,8 +29,9 @@ public class OAuthService {
                 return;
             case "kakao":
                 KakaoTokenResponse kakaoToken = kakaoClient.getAccessToken(code, state);
-                KakaoUserResponse kakaoUserResponse = kakaoClient.getUserInfo(kakaoToken);
-                System.out.println("kakaUser: " + "");
+                KakaoTokenInfoResponse kakaoTokenInfo = kakaoClient.getTokenInfo(kakaoToken);
+                KakaoUserResponse kakaoUserResponse = kakaoClient.getUserInfo(code, kakaoToken, kakaoTokenInfo);
+                System.out.println("kakaUser: " + kakaoUserResponse.getKakao_account().getName());
                 return;
         }
 

@@ -1,5 +1,6 @@
 package com.godlife.oauth.client;
 
+import com.godlife.oauth.dto.response.KakaoTokenInfoResponse;
 import com.godlife.oauth.dto.response.KakaoTokenResponse;
 import com.godlife.oauth.dto.response.KakaoUserResponse;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class KakaoClient {
         params.add("client_id", client_id);
         params.add("client_secret", client_secret);
         params.add("redirect_uri", redirect_uri);
-        params.add(code, code);
+        params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
 
@@ -41,7 +42,33 @@ public class KakaoClient {
         return response.getBody();
     }
 
-    public KakaoUserResponse getUserInfo(KakaoTokenResponse token) {
-        return new KakaoUserResponse();
+    public KakaoTokenInfoResponse getTokenInfo(KakaoTokenResponse token) {
+        String url = "https://kapi.kakao.com/v1/user/access_token_info";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token.getAccess_token());
+        HttpEntity<Void> request = new HttpEntity<>(headers);
+
+        ResponseEntity<KakaoTokenInfoResponse> response = restTemplate.exchange(url, HttpMethod.GET, request, KakaoTokenInfoResponse.class);
+
+        return response.getBody();
+    }
+
+    public KakaoUserResponse getUserInfo(String code, KakaoTokenResponse token, KakaoTokenInfoResponse tokenInfo) {
+        String url = "https://kapi.kakao.com/v2/user/me";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setBearerAuth(token.getAccess_token());
+
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+        params.add("target_id_type", "user_id");
+        params.add("target_id", tokenInfo.getId());
+
+        HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(params, headers);
+
+        ResponseEntity<KakaoUserResponse> response = restTemplate.postForEntity(url, request, KakaoUserResponse.class);
+
+        return response.getBody();
     }
 }

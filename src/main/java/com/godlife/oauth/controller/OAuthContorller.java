@@ -36,7 +36,7 @@ public class OAuthContorller {
     public String kakaoCallback(String code, String state){
         System.out.println("kakaoCallback 함수 진입");
         oAuthService.login(code, state, "kakao");
-        return "kakao";
+        return "redirect:" + frontBaseUrl;
     }
 
 
