@@ -1,6 +1,6 @@
-package com.godlife.oauth.controller;
+package com.godlife.global.security.oauth.controller;
 
-import com.godlife.oauth.service.OAuthService;
+import com.godlife.global.security.oauth.service.OAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,4 @@ public class OAuthContorller {
         oAuthService.login(code, state, "kakao");
         return "redirect:" + frontBaseUrl;
     }
-
-
-
 }

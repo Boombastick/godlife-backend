@@ -1,10 +1,8 @@
-package com.godlife.oauth.client;
+package com.godlife.global.security.oauth.client;
 
-import com.godlife.oauth.dto.response.NaverTokenResponse;
-import com.godlife.oauth.dto.response.NaverUserResponse;
-import lombok.AllArgsConstructor;
+import com.godlife.global.security.oauth.dto.response.NaverTokenResponse;
+import com.godlife.global.security.oauth.dto.response.NaverUserResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;

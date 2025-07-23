@@ -1,7 +1,7 @@
-package com.godlife.oauth.client;
+package com.godlife.global.security.oauth.client;
 
-import com.godlife.oauth.dto.response.GoogleTokenResponse;
-import com.godlife.oauth.dto.response.GoogleUserResponse;
+import com.godlife.global.security.oauth.dto.response.GoogleTokenResponse;
+import com.godlife.global.security.oauth.dto.response.GoogleUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

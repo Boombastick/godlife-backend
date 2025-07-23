@@ -1,4 +1,4 @@
-package com.godlife.config;
+package com.godlife.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

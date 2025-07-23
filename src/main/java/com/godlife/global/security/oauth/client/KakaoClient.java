@@ -1,8 +1,8 @@
-package com.godlife.oauth.client;
+package com.godlife.global.security.oauth.client;
 
-import com.godlife.oauth.dto.response.KakaoTokenInfoResponse;
-import com.godlife.oauth.dto.response.KakaoTokenResponse;
-import com.godlife.oauth.dto.response.KakaoUserResponse;
+import com.godlife.global.security.oauth.dto.response.KakaoTokenInfoResponse;
+import com.godlife.global.security.oauth.dto.response.KakaoTokenResponse;
+import com.godlife.global.security.oauth.dto.response.KakaoUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
