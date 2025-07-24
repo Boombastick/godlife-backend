@@ -1,9 +1,7 @@
 package com.godlife.domain.user;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -11,8 +9,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@Table(name="user")
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="users")
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,10 @@ public class User {
     @Column(name="provider")
     private String provider;
     @Column(name="provider_id")
-    private String provider_id;
+    private String providerId;
     @Column(name="profile_img_url")
     private String profile_img_url;
-    @Column(name="create_at")
+    @Column(name="created_at")
     private LocalDateTime created_at;
 
 }

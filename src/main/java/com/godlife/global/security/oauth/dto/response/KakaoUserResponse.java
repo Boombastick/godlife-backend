@@ -20,7 +20,7 @@ public class KakaoUserResponse {
     public SocialUserDto toDto() {
         return SocialUserDto.builder()
                 .provider("kakao")
-                .provider_id(String.valueOf(id))
+                .providerId(String.valueOf(id))
                 .email(kakao_account.getEmail())
                 .nickname(kakao_account.getProfile().getNickname())
                 .profile_img_url(kakao_account.getProfile().getProfile_image_url())

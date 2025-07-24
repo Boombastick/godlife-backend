@@ -21,7 +21,7 @@ public class NaverUser {
     public SocialUserDto toDto() {
         return SocialUserDto.builder()
                 .provider("naver")
-                .provider_id(id)
+                .providerId(id)
                 .email(email)
                 .nickname(nickname)
                 .profile_img_url(profile_image)

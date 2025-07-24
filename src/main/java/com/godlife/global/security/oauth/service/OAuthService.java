@@ -1,14 +1,13 @@
 package com.godlife.global.security.oauth.service;
 
-import com.godlife.domain.user.User;
+import com.godlife.domain.user.Users;
 import com.godlife.domain.user.UserService;
 import com.godlife.domain.user.dto.SocialUserDto;
 import com.godlife.global.security.oauth.client.GoogleClient;
 import com.godlife.global.security.oauth.client.KakaoClient;
 import com.godlife.global.security.oauth.client.NaverClient;
-import com.godlife.global.oauth.dto.response.*;
 import com.godlife.global.security.oauth.dto.response.*;
-import com.godlife.oauth.dto.response.*;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,7 @@ public class OAuthService {
 
     private final UserService userService;
 
-    public User login(String code, String state, String provider) {
+    public Users login(String code, String state, String provider) {
         SocialUserDto socialUserDto = null;
         switch (provider) {
             case "naver":
@@ -36,6 +35,8 @@ public class OAuthService {
                 GoogleUserResponse googleUser = googleClient.getUserInfo(googleToken);
                 socialUserDto = googleUser.toDto();
                 System.out.println("googleUser: " + googleUser.getName());
+                System.out.println("googleUser: " + googleUser);
+                System.out.println("googleUser:" + googleUser.getName() +" "+googleUser.getEmail() +" "+ googleUser.getId() +" "+ googleUser.getPicture());
                 break;
             case "kakao":
                 KakaoTokenResponse kakaoToken = kakaoClient.getAccessToken(code, state);

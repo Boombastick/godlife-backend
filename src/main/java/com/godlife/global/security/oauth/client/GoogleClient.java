@@ -39,6 +39,9 @@ public class GoogleClient {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<GoogleTokenResponse> response = restTemplate.postForEntity(url, request, GoogleTokenResponse.class);
+
+        System.out.println("code : " + code);
+        System.out.println("reposen.getBody()" + response.getBody().getAccess_token());
         return response.getBody();
     }
 

@@ -19,7 +19,7 @@ public class GoogleUserResponse {
     public SocialUserDto toDto() {
         return SocialUserDto.builder()
                 .provider("google")
-                .provider_id(id)
+                .providerId(id)
                 .email(email)
                 .nickname(name)
                 .profile_img_url(picture)
